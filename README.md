@@ -31,8 +31,3 @@ npm run preview    # serve the production build locally
 
 Asset paths are relative (`base: './'` in `vite.config.js`), so the site works at any
 repo path — `username.github.io/repo-name/` or a custom domain.
-
-## Before you ship
-
-- Point project ticket links at individual repos if you want per-project links
-  (currently they link to the GitHub profile).

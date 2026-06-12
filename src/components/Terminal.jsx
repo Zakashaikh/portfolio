@@ -36,14 +36,14 @@ const COMMANDS = {
   projects: [
     'INC-2026-001  phishing email analyser · resolved',
     'INC-2026-002  log analyzer · resolved',
-    'INC-2026-003  hashing tool · resolved',
+    'INC-2026-003  hash function tool · resolved',
     'INC-2026-004  password vault · in progress',
   ],
   skills: ['splunk · wireshark · nmap · python · flask · linux'],
   contact: [
     'email     shaikhzakaurrehman@gmail.com',
     'github    github.com/Zakashaikh',
-    'linkedin  linkedin.com/in/zakaurrehman-shaikh',
+    'linkedin  linkedin.com/in/zakaurrehman-shaikh-46679a212',
   ],
   exit: ['nice try — the queue never ends'],
 }

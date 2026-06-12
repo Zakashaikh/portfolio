@@ -13,6 +13,7 @@ const TICKETS = [
     title: 'Phishing Email Analyser',
     summary: 'Automated triage for suspicious emails — parse, score, enrich, ML verdict.',
     tag: 'MSc dissertation',
+    repo: 'https://github.com/Zakashaikh/phishing-triage-platform',
     body: [
       'My MSc dissertation project. Feed it a raw .eml file and it does what a Tier 1 analyst would: tears down the headers, extracts every URL and attachment, runs 15 weighted heuristic rules each mapped to a MITRE ATT&CK technique, enriches the indicators against the VirusTotal API, and scores it with a trained gradient-boosting model — producing a verdict with the evidence attached.',
       'The part I am proudest of is the evaluation. I benchmarked the rules against 7,095 real emails (Nazario phishing corpus + SpamAssassin ham) and the per-rule fire rates showed two header rules were anti-signals — they fired more on legitimate mailing-list traffic than on phish. Reweighting from that data lifted precision from 0.63 to 0.91 and cut the false-positive rate from 1-in-5 to 1-in-27.',
@@ -57,23 +58,24 @@ const TICKETS = [
     id: 'INC-2026-003',
     severity: 'MEDIUM',
     status: 'RESOLVED',
-    title: 'Hashing Tool',
-    summary: 'CLI + Flask hashing utility — then I audited my own crypto and fixed it.',
+    title: 'Hash Function Tool',
+    summary: 'Flask hashing utility — then I security-audited my own build and fixed it.',
+    repo: 'https://github.com/Zakashaikh/hash-function-tool',
     body: [
-      'Started as a hashing utility with both a CLI and a Flask web front-end. The interesting part came after shipping: I security-audited my own build, concluded SHA-256 was the wrong primitive for password handling, and migrated to bcrypt — a small project that taught a big lesson about fast hashes versus slow KDFs.',
+      'A Flask web app that generates and compares MD5/SHA-1/SHA-256/SHA-512 digests of text and files, with history in SQLite and a JSON API. The interesting part came after shipping: I went back and reviewed my own code the way I would review someone else\'s — and found four real vulnerabilities. Each fix is a documented commit in the repo.',
     ],
     findings: [
-      'Dual interface: command-line tool and Flask web app',
-      'Self-audit identified fast-hash misuse in credential handling',
-      'Migrated SHA-256 → bcrypt with per-password salting and tuned cost factor',
+      'Found and fixed: hardcoded secret key, Werkzeug debugger exposed on 0.0.0.0 (remote code execution risk)',
+      'Found and fixed: raw exception text leaking to clients, unbounded upload size',
+      'Also evicted a committed SQLite database and a README that overclaimed — honesty is a security control too',
     ],
     timeline: [
       { t: 'v1', label: 'CLI + Flask shipped' },
-      { t: 'audit', label: 'fast-hash misuse found' },
-      { t: 'fix', label: 'SHA-256 → bcrypt' },
-      { t: 'closed', label: 'lessons documented' },
+      { t: 'audit', label: '4 vulnerabilities found' },
+      { t: 'fix', label: 'hardened, commit by commit' },
+      { t: 'closed', label: 'README tells the story' },
     ],
-    stack: ['Python', 'Flask', 'bcrypt', 'Security audit'],
+    stack: ['Python', 'Flask', 'SQLite', 'Security audit'],
   },
   {
     id: 'INC-2026-004',
@@ -251,12 +253,12 @@ function Ticket({ ticket, open, onToggle }) {
                   ))}
                 </ul>
                 <a
-                  href={GITHUB}
+                  href={ticket.repo || GITHUB}
                   target="_blank"
                   rel="noreferrer"
                   className="font-mono text-xs text-acc transition-colors hover:text-sky"
                 >
-                  view on github ↗
+                  {ticket.repo ? 'view repository ↗' : 'view on github ↗'}
                 </a>
               </div>
             </div>
