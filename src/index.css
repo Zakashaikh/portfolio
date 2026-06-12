@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink: #0a0e16;
+  --color-ink-2: #0c111c;
+  --color-panel: #0e1521;
+  --color-panel-2: #131c2c;
+  --color-line: #1c2535;
+  --color-fg: #e8eef6;
+  --color-mut: #8e9bae;
+  --color-acc: #5eead4;
+  --color-sky: #7dd3fc;
+  --color-amber: #fbbf24;
+  --color-rose: #fb7185;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-ink text-fg font-body antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-acc) 28%, transparent);
+  color: var(--color-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-acc);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- background textures ---------------------------------------- */
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(125 211 252 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(125 211 252 / 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-scan {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(232 238 246 / 0.012) 0px,
+    rgb(232 238 246 / 0.012) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ---- terminal cursor & status dots ------------------------------- */
+
+/* ---- skills ticker ------------------------------------------------ */
+
+@keyframes tick {
+  to { transform: translateX(-50%); }
+}
+
+.tick-track {
+  animation: tick 38s linear infinite;
+}
+
+.tick-track:hover {
+  animation-play-state: paused;
+}
+
+/* ---- terminal telemetry sparkline --------------------------------- */
+
+@keyframes spark {
+  to { transform: translateX(-64px); }
+}
+
+.spark-anim {
+  animation: spark 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tick-track,
+  .spark-anim {
+    animation: none;
+  }
+}
+
+@keyframes line-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.line-in {
+  animation: line-in 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line-in {
+    animation: none;
+  }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes ping-dot {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acc) 55%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.dot-live {
+  animation: ping-dot 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@keyframes ping-amber {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-amber) 55%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.dot-progress {
+  animation: ping-amber 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink,
+  .dot-live,
+  .dot-progress {
+    animation: none;
+  }
+}
+
+/* ---- skip link ---------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  @apply bg-acc text-ink font-mono text-sm px-4 py-2 rounded-md;
+}
+
+/* ---- scrollbar (subtle, webkit) ----------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 5px;
+  border: 2px solid var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3850;
+}
