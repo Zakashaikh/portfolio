@@ -8,6 +8,32 @@ const GITHUB = 'https://github.com/Zakashaikh'
 const TICKETS = [
   {
     id: 'INC-2026-001',
+    severity: 'CRITICAL',
+    status: 'RESOLVED',
+    title: 'JWTCheck — JWT Security Analyser',
+    summary: 'Static analyser that finds JWT cryptographic misuse in Python source, plus offline token assessment.',
+    tag: 'MSc dissertation',
+    body: [
+      'My MSc dissertation project. JWTCheck is a security tool with two modes: it statically analyses Python source (via the AST) for 15 classes of PyJWT cryptographic misuse, and it separately decodes and risk-scores raw JWTs entirely offline — no token or secret ever leaves the machine, so it is safe for incident responders handling live credentials.',
+      'It adapts the 15 JWT-misuse detection patterns from JWTKey (Xu et al., ESORICS 2023) — which was Java-only — to Python and PyJWT, for which no equivalent native tool existed. Each finding is tied to a CWE and, where relevant, a real CVE (e.g. the "none" algorithm CVE-2015-9235 and the algorithm-confusion CVE-2022-21449).',
+    ],
+    findings: [
+      '15 AST-based rules: none-algorithm, algorithm confusion, disabled signature/expiry/issuer verification, hardcoded secrets, missing exp/aud/iss claims — each mapped to a CWE and CVE',
+      'Beat the incumbents on the same fixtures: 15/15 JWT misuses detected vs Bandit 0/15 and Semgrep 3/15, with zero false positives on safe code',
+      '100% precision and recall on a 28-sample controlled benchmark; 96.7% precision across 332 findings when scanning 96 real external GitHub projects',
+      'A refinement that raises only the meaningful signal when verification is disabled lifted real-world precision from 88.3% to 96.7%',
+      'Offline token assessment with optional HMAC secret recovery, plus SARIF output for CI pipelines',
+    ],
+    timeline: [
+      { t: 'M1', label: '15-rule AST scanner' },
+      { t: 'M2', label: 'offline token analyser' },
+      { t: 'M3', label: 'benchmarked vs Bandit/Semgrep' },
+      { t: 'M4', label: 'scanned 96 real projects' },
+    ],
+    stack: ['Python', 'AST static analysis', 'PyJWT', 'SARIF', 'MITRE CWE'],
+  },
+  {
+    id: 'INC-2026-002',
     severity: 'HIGH',
     status: 'RESOLVED',
     title: 'Phishing Email Analyser',
@@ -33,7 +59,7 @@ const TICKETS = [
     stack: ['Python', 'scikit-learn', 'Flask', 'VirusTotal API', 'MITRE ATT&CK'],
   },
   {
-    id: 'INC-2026-002',
+    id: 'INC-2026-003',
     severity: 'MEDIUM',
     status: 'RESOLVED',
     title: 'Log Analyzer',
@@ -55,7 +81,7 @@ const TICKETS = [
     stack: ['Python', 'Regex', 'Anomaly detection'],
   },
   {
-    id: 'INC-2026-003',
+    id: 'INC-2026-004',
     severity: 'MEDIUM',
     status: 'RESOLVED',
     title: 'Hash Function Tool',
@@ -78,7 +104,7 @@ const TICKETS = [
     stack: ['Python', 'Flask', 'SQLite', 'Security audit'],
   },
   {
-    id: 'INC-2026-004',
+    id: 'INC-2026-005',
     severity: 'HIGH',
     status: 'IN PROGRESS',
     title: 'Password Vault',
@@ -102,6 +128,7 @@ const TICKETS = [
 ]
 
 const SEV_STYLE = {
+  CRITICAL: 'border-rose/40 bg-rose/10 text-rose',
   HIGH: 'border-amber/40 bg-amber/10 text-amber',
   MEDIUM: 'border-sky/40 bg-sky/10 text-sky',
   LOW: 'border-line bg-panel-2 text-mut',

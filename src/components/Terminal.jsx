@@ -34,10 +34,11 @@ const COMMANDS = {
   ],
   whoami: [{ kind: 'me', text: NAME_LINE }],
   projects: [
-    'INC-2026-001  phishing email analyser · resolved',
-    'INC-2026-002  log analyzer · resolved',
-    'INC-2026-003  hash function tool · resolved',
-    'INC-2026-004  password vault · in progress',
+    'INC-2026-001  jwtcheck — jwt security analyser · resolved',
+    'INC-2026-002  phishing email analyser · resolved',
+    'INC-2026-003  log analyzer · resolved',
+    'INC-2026-004  hash function tool · resolved',
+    'INC-2026-005  password vault · in progress',
   ],
   skills: ['splunk · wireshark · nmap · python · flask · linux'],
   contact: [
