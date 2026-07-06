@@ -7,7 +7,7 @@ const ITEMS = [
     title: 'MSc Cyber Security',
     org: 'University of Surrey · Guildford, UK',
     detail:
-      'Dissertation: automated phishing email triage — weighted heuristics evaluated on 7,095 real emails, VirusTotal enrichment and an ML verdict layer.',
+      'Alongside the degree I built an automated phishing email triage platform — weighted heuristics evaluated on 7,095 real emails, VirusTotal enrichment and an ML verdict layer.',
     badge: { label: 'current', tone: 'acc' },
   },
   {

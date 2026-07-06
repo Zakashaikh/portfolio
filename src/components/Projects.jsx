@@ -12,10 +12,10 @@ const TICKETS = [
     status: 'RESOLVED',
     title: 'Phishing Email Analyser',
     summary: 'Automated triage for suspicious emails — parse, score, enrich, ML verdict.',
-    tag: 'MSc dissertation',
+    tag: 'personal project',
     repo: 'https://github.com/Zakashaikh/phishing-triage-platform',
     body: [
-      'My MSc dissertation project. Feed it a raw .eml file and it does what a Tier 1 analyst would: tears down the headers, extracts every URL and attachment, runs 15 weighted heuristic rules each mapped to a MITRE ATT&CK technique, enriches the indicators against the VirusTotal API, and scores it with a trained gradient-boosting model — producing a verdict with the evidence attached.',
+      'A personal project I built end to end. Feed it a raw .eml file and it does what a Tier 1 analyst would: tears down the headers, extracts every URL and attachment, runs 15 weighted heuristic rules each mapped to a MITRE ATT&CK technique, enriches the indicators against the VirusTotal API, and scores it with a trained gradient-boosting model — producing a verdict with the evidence attached.',
       'The part I am proudest of is the evaluation. I benchmarked the rules against 7,095 real emails (Nazario phishing corpus + SpamAssassin ham) and the per-rule fire rates showed two header rules were anti-signals — they fired more on legitimate mailing-list traffic than on phish. Reweighting from that data lifted precision from 0.63 to 0.91 and cut the false-positive rate from 1-in-5 to 1-in-27.',
     ],
     findings: [

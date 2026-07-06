@@ -32,7 +32,8 @@ export default function About() {
                 changed — pipelines and gearboxes became networks and identity providers — but the
                 discipline didn't. I moved to the UK to make that switch deliberately, and I'm now
                 finishing an <span className="text-fg">MSc in Cyber Security at the University of
-                Surrey</span>, with a dissertation on automated phishing triage.
+                Surrey</span>, building hands-on projects like an automated phishing triage
+                platform alongside it.
               </p>
               <p>
                 What I bring to a Tier 1 seat: an engineer's respect for process, calm
