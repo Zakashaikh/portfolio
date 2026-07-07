@@ -285,7 +285,7 @@ function Ticket({ ticket, open, onToggle }) {
                   rel="noreferrer"
                   className="font-mono text-xs text-acc transition-colors hover:text-sky"
                 >
-                  {ticket.repo ? 'view repository ↗' : 'view on github ↗'}
+                  {ticket.repo ? 'view repository ↗' : 'github profile ↗'}
                 </a>
               </div>
             </div>
@@ -303,8 +303,7 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-20 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHead
-          no="02"
-          code="case_files"
+          cmd="ls case_files/ --sort severity"
           title="Projects, filed as incidents."
           blurb="Work formatted the way I think about it — as tickets. Open one to read the investigation."
         />

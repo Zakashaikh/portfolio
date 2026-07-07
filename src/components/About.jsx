@@ -16,7 +16,7 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-20 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHead no="01" code="about" title="From failure analysis to threat analysis." />
+        <SectionHead cmd="cat analyst/origin.md" title="From failure analysis to threat analysis." />
 
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
           <Reveal>

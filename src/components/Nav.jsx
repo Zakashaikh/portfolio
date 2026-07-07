@@ -29,6 +29,13 @@ export default function Nav() {
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 40, restDelta: 0.001 })
 
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-ink/75 backdrop-blur-md">
       <motion.div
@@ -92,7 +99,7 @@ export default function Nav() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-2.5 font-mono text-sm uppercase tracking-[0.18em] text-mut transition-colors hover:text-acc"
+                className="block py-3 font-mono text-sm uppercase tracking-[0.18em] text-mut transition-colors hover:text-acc"
               >
                 {l.label}
               </a>

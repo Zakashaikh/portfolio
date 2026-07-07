@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Terminal from './Terminal'
 import Magnetic from './ui/Magnetic'
@@ -9,6 +9,12 @@ export default function Hero() {
   const reduce = useReducedMotion()
   const [revealed, setRevealed] = useState(false)
   const show = revealed || reduce
+
+  // never hold the name hostage to the terminal boot — reveal after 1.4s regardless
+  useEffect(() => {
+    const t = setTimeout(() => setRevealed(true), 1400)
+    return () => clearTimeout(t)
+  }, [])
 
   const fadeUp = (delay) => ({
     initial: reduce ? false : { opacity: 0, y: 24, filter: 'blur(5px)' },
@@ -31,9 +37,10 @@ export default function Hero() {
         <div className="order-2 text-center lg:order-1 lg:text-left">
           <motion.p
             {...fadeUp(0)}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-acc sm:text-xs"
+            aria-hidden="true"
+            className="font-mono text-xs text-mut sm:text-sm"
           >
-            <span aria-hidden="true">{'// '}</span>security operations · portfolio
+            <span className="text-acc">❯ </span>whoami
           </motion.p>
 
           <h1 className="mt-6 font-display font-bold leading-[1.02] tracking-tight">
@@ -49,7 +56,7 @@ export default function Hero() {
             <span aria-hidden="true" className="block overflow-hidden pb-2">
               <motion.span
                 {...rise(0.16)}
-                className="mx-auto block w-fit bg-gradient-to-r from-acc to-sky bg-clip-text text-transparent text-[clamp(2.6rem,7.2vw,4.5rem)] lg:mx-0 lg:text-[clamp(2.6rem,4.4vw,4.2rem)]"
+                className="block text-acc text-[clamp(2.6rem,7.2vw,4.5rem)] lg:text-[clamp(2.6rem,4.4vw,4.2rem)]"
               >
                 Shaikh
               </motion.span>

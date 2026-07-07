@@ -49,8 +49,7 @@ export default function Skills() {
     <section id="skills" className="scroll-mt-20 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHead
-          no="03"
-          code="capabilities"
+          cmd="ls toolkit/ --group-by task"
           title="Tooling I reach for."
           blurb="Grouped the way a SOC actually uses them — detect, understand, automate, practise."
         />

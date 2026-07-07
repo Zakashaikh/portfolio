@@ -50,8 +50,8 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-20 px-6 py-24 md:py-36">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-acc sm:text-xs">
-            <span aria-hidden="true">{'// '}</span>05 · contact
+          <p aria-hidden="true" className="font-mono text-xs text-mut sm:text-sm">
+            <span className="text-acc">❯ </span>mail -s "tier 1 role"
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-fg md:text-6xl">
             Let's clear some queues.

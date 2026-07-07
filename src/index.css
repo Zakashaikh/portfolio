@@ -28,9 +28,19 @@ html {
   }
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
   @apply bg-ink text-fg font-body antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 ::selection {

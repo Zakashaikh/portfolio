@@ -63,7 +63,10 @@ const LINE_STYLE = {
 
 function Line({ line }) {
   return (
-    <div className={`line-in whitespace-pre-wrap break-all ${LINE_STYLE[line.kind]}`}>
+    <div
+      aria-hidden={line.ambient || undefined}
+      className={`line-in whitespace-pre-wrap break-words ${LINE_STYLE[line.kind]}`}
+    >
       {line.kind === 'cmd' && <span className="mr-2 text-acc">❯</span>}
       {line.kind === 'me' && <span className="mr-2 text-sky">▸</span>}
       {line.text}
@@ -133,7 +136,7 @@ export default function Terminal({ onResolve }) {
     const id = setInterval(() => {
       const text = AMBIENT[i % AMBIENT.length]
       i += 1
-      setLines((l) => [...l, { kind: 'dim', text, id: `amb-${i}` }].slice(-11))
+      setLines((l) => [...l, { kind: 'dim', text, id: `amb-${i}`, ambient: true }].slice(-11))
     }, 4600)
     return () => clearInterval(id)
   }, [interactive, engaged, reduce])
@@ -148,7 +151,7 @@ export default function Terminal({ onResolve }) {
     }
     seq.current += 1
     const out = cmd.startsWith('sudo')
-      ? ['permission denied — attempt logged as INC-2026-005']
+      ? ['permission denied — attempt logged as INC-2026-006']
       : (COMMANDS[cmd] ?? [`command not found: ${cmd} — try 'help'`])
     const outLines = out.map((o, i) => ({
       kind: typeof o === 'string' ? 'out' : o.kind,

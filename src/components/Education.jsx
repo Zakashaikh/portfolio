@@ -30,7 +30,7 @@ export default function Education() {
   return (
     <section id="education" className="scroll-mt-20 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHead no="04" code="training_log" title="Education & certifications." />
+        <SectionHead cmd="tail -n 3 training.log" title="Education & certifications." />
 
         <ol className="relative ml-1.5 space-y-10 border-l border-line pl-8 sm:ml-3">
           {ITEMS.map((item, i) => (
