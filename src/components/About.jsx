@@ -6,7 +6,7 @@ const PROFILE = [
   ['name', 'zakaurrehman_shaikh'],
   ['base', 'guildford_uk'],
   ['education', 'msc_cyber_security@surrey'],
-  ['graduating', '"2026"'],
+  ['graduating', '"2027"'],
   ['background', 'mechanical_engineering'],
   ['superpower', 'root_cause_analysis'],
   ['status', 'open_to_tier1_soc'],

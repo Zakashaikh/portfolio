@@ -3,7 +3,7 @@ import SectionHead from './ui/SectionHead'
 
 const ITEMS = [
   {
-    period: 'Graduating 2026',
+    period: '2026–2027',
     title: 'MSc Cyber Security',
     org: 'University of Surrey · Guildford, UK',
     detail:
